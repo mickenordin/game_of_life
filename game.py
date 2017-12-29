@@ -6,7 +6,7 @@ import time
 
 class Board():
 
-    # Board should be a n x n matix of cells that describes a flat torus  
+    # Board should be a n x m matix of cells that describes a flat torus  
     def __init__(self, cells=None):
         if cells is None:
             self.cells = self.from_file("board.txt")
@@ -32,7 +32,7 @@ class Board():
         for row in self.save_file:
             board.append([])
             cellc = 0
-            for cell in row[:-1].split(','):
+            for cell in row[:-1]:
                 board[rowc].append( Cell(rowc,cellc,bool(int(cell))) )
                 cellc = cellc + 1
             rowc = rowc + 1
@@ -91,12 +91,6 @@ class Cell:
         else:
             return " "
 
-    def kill(self):
-        self.alive = False
-
-    def hatch(self):
-        self.alive = True
-
 class MooreN:
 
     # Moore Neighbourhood is all eight cells surrounding a central cell
@@ -138,7 +132,7 @@ board = Board()
 while True:
     print("\033[H\033[J")
     print(board)
-    time.sleep(0.3)
+    time.sleep(0.1)
     board = board.next_gen()
 
 
