@@ -62,8 +62,8 @@ class Board():
             last_col = 0
 
         return MooreN( [ self.cells.item(first_row,first_col), self.cells.item(first_row,my_col), self.cells.item(first_row,last_col), 
-                         self.cells.item(my_row,first_col), self.cells.item(my_row,last_col), self.cells.item(last_row,first_col), 
-                         self.cells.item(last_row,my_col), self.cells.item(last_row,last_col) ], cell) 
+                         self.cells.item(my_row,first_col),                                       self.cells.item(my_row,last_col),
+                         self.cells.item(last_row,first_col),  self.cells.item(last_row,my_col),  self.cells.item(last_row,last_col) ], cell) 
 
 
     def next_gen(self):
@@ -132,7 +132,7 @@ board = Board()
 while True:
     print("\033[H\033[J")
     print(board)
-    time.sleep(0.1)
+    time.sleep(0.01)
     board = board.next_gen()
 
 
