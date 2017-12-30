@@ -26,16 +26,17 @@ class Board():
         return string[:-2]
 
     def from_file(self, file_name):
-        self.save_file = open(file_name,'r')
+        save_file = open(file_name,'r')
         rowc = 0
         board = []
-        for row in self.save_file:
+        for row in save_file:
             board.append([])
             cellc = 0
             for cell in row[:-1]:
                 board[rowc].append( Cell(rowc,cellc,bool(int(cell))) )
                 cellc = cellc + 1
             rowc = rowc + 1
+        save_file.close()
         return matrix(board)
 
     def get_neighbours(self, cell):
